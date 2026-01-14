@@ -1,0 +1,15 @@
+-- WordPress Advanced Search Block Database Backup
+-- 
+-- This is a placeholder file. To create an actual database backup:
+-- 
+-- 1. Start the Docker containers:
+--    docker-compose up -d
+-- 
+-- 2. Export the database:
+--    docker exec wp-advanced-search-db mysqldump -u wordpress -pwordpress wordpress > database.sql
+-- 
+-- Note: Replace 'wordpress' with your actual database credentials if different.
+-- 
+-- After setting up WordPress and generating test data with FakerPress,
+-- run the export command above to create the actual backup file.
+

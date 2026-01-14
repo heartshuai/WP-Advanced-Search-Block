@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "advanced-search-block/advanced-search",
+  "version": "1.0.0",
+  "title": "Advanced Search Block",
+  "category": "widgets",
+  "icon": "search",
+  "description": "A block for advanced post search with keyword, category, and tag filtering.",
+  "supports": {
+    "html": false,
+    "align": true
+  },
+  "textdomain": "advanced-search-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
+

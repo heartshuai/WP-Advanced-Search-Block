@@ -54,11 +54,24 @@ function asb_register_block() {
     );
 
     // Register frontend script
+    $frontend_asset_file = ASB_PLUGIN_DIR . 'build/frontend.asset.php';
+    if (file_exists($frontend_asset_file)) {
+        $frontend_asset = require $frontend_asset_file;
+        // Remove 'react' from dependencies as WordPress provides it via wp-element
+        $dependencies = array_filter($frontend_asset['dependencies'], function($dep) {
+            return $dep !== 'react';
+        });
+        $version = $frontend_asset['version'];
+    } else {
+        $dependencies = array('wp-element', 'wp-i18n');
+        $version = ASB_VERSION;
+    }
+    
     wp_register_script(
         'advanced-search-block-frontend',
         ASB_PLUGIN_URL . 'build/frontend.js',
-        array('wp-element'),
-        ASB_VERSION,
+        $dependencies,
+        $version,
         true
     );
 

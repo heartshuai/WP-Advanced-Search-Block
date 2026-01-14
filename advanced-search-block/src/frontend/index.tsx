@@ -30,10 +30,35 @@ function AdvancedSearchBlock() {
 }
 
 // Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  const containers = document.querySelectorAll('.advanced-search-block-container');
+function initAdvancedSearchBlocks() {
+  const containers = document.querySelectorAll('.advanced-search-block-container:not([data-initialized])');
+  if (containers.length === 0) {
+    return;
+  }
+  
   containers.forEach((container) => {
-    render(<AdvancedSearchBlock />, container);
+    // Skip if already initialized
+    if (container.getAttribute('data-initialized') === 'true') {
+      return;
+    }
+    container.setAttribute('data-initialized', 'true');
+    try {
+      render(<AdvancedSearchBlock />, container);
+    } catch (error) {
+      console.error('Advanced Search Block initialization error:', error);
+      container.innerHTML = '<p>Error loading search block. Please refresh the page.</p>';
+    }
   });
-});
+}
+
+// Make function globally available for inline script
+(window as any).asbInitBlocks = initAdvancedSearchBlocks;
+
+// Try to initialize immediately
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAdvancedSearchBlocks);
+} else {
+  // Small delay to ensure DOM is fully ready
+  setTimeout(initAdvancedSearchBlocks, 0);
+}
 

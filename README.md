@@ -173,7 +173,11 @@ advanced-search-block/
 使用以下命令导出数据库：
 
 ```bash
-docker exec wp-advanced-search-db mysqldump -u wordpress -pwordpress wordpress > database.sql
+# 使用 root 用户导出（推荐）
+docker exec wp-advanced-search-db mysqldump -u root -prootpassword wordpress > database.sql
+
+# 或者使用 wordpress 用户（需要添加 --no-tablespaces 参数）
+docker exec wp-advanced-search-db mysqldump -u wordpress -pwordpress --no-tablespaces wordpress > database.sql
 ```
 
 ## 故障排除

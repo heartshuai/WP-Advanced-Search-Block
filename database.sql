@@ -6,9 +6,13 @@
 --    docker-compose up -d
 -- 
 -- 2. Export the database:
---    docker exec wp-advanced-search-db mysqldump -u wordpress -pwordpress wordpress > database.sql
--- 
--- Note: Replace 'wordpress' with your actual database credentials if different.
+--    Using root user (recommended):
+--    docker exec wp-advanced-search-db mysqldump -u root -prootpassword wordpress > database.sql
+--
+--    Or using wordpress user with --no-tablespaces flag:
+--    docker exec wp-advanced-search-db mysqldump -u wordpress -pwordpress --no-tablespaces wordpress > database.sql
+--
+-- Note: Replace credentials if different from default.
 -- 
 -- After setting up WordPress and generating test data with FakerPress,
 -- run the export command above to create the actual backup file.

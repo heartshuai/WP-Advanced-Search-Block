@@ -2,7 +2,7 @@
   "name": "advanced-search-block",
   "version": "1.0.0",
   "description": "WordPress Gutenberg block for advanced post search",
-  "author": "Your Name",
+  "author": "yanxingshuai",
   "license": "GPL-2.0-or-later",
   "scripts": {
     "build": "wp-scripts build",
